@@ -82,6 +82,25 @@ body {
     opacity: 0.75;
 }
 
+.btn-regresar {
+    background-color: #c20000;
+    color: white;
+    font-weight: 500;
+    font-size: 14pt;
+    text-align: center;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute; /* Para posicionar el botón en la esquina */
+    top: 20px; /* Ajusta la posición vertical */
+    left: 20px; /* Ajusta la posición horizontal */
+}
+
+.btn-regresar:hover {
+    opacity: 0.75;
+}
+
 /* Estilo de la página de detalles */
 .details-container {
     max-width: 800px;
