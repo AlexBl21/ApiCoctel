@@ -11,7 +11,7 @@ body {
     margin:2rem;
     background: linear-gradient(180deg, #000000, #c20000,#5400c2);
     background-size: cover;
-    min-height: 100vh;
+    min-height: 93.3vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,14 +121,17 @@ body {
 }
 
 .drink-info p, .drink-info ul {
+    
     font-size: 1.1rem;
     line-height: 1.5;
     font-family: "Roboto", sans-serif;
 }
 
 .drink-info ul {
+    display: flex;
+    flex-direction: column;
     font-family: "Roboto", sans-serif;
-    list-style-type: square;
+    list-style-type: disc;
     padding-left: 20px;
 }
 
@@ -151,35 +154,90 @@ body {
 
 /* Estilos para la ventana modal */
 .modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Posición fija */
-    z-index: 1; /* Encima de otros elementos */
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
-    overflow: auto; /* Permitir desplazamiento si es necesario */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /*esto permite ver el fondo*/
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* Centrando el modal */
+    margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Ancho del modal */
+    width: 80%; 
+    border-radius: 15px;
+    line-height: 1.5;
 }
 
 .close {
-    color: #aaa;
-    float: right; /* Alinear a la derecha */
+    color: #898787;
+    float: right; 
     font-size: 28px;
     font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black; /* Cambia color al pasar el ratón */
+    color: black; 
     text-decoration: none;
-    cursor: pointer; /* Cambia cursor al pasar el ratón */
+    cursor: pointer; 
+}
+
+@media (max-width: 768px) {
+    body {
+        height: 96.7vh;
+        margin: 1rem;
+    }
+
+    .card-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .card-img {
+        height: 150px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .details-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .drink-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .drink-title {
+        font-size: 2rem;
+    }
+
+    .drink-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .drink-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .drink-info p,
+    .drink-info ul {
+        font-size: 1rem;
+    }
 }
