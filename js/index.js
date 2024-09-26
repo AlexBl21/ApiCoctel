@@ -1,15 +1,31 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
     const apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1';
-    const inputIngrediente = document.getElementById('ingredienteInput');
-    const suggestionsList = document.getElementById('suggestionsList');
+    const inputIngrediente = document.getElementById('ingrediente');
+    const suggestionsListIngrediente = document.getElementById('suggestionsListIngrediente');
     const tipoSelect = document.getElementById('tipo');
     const usernameInput = document.getElementById('username');
     const form = document.getElementById('form');
 
+    let ingredientesDisponibles = []; // Array para almacenar los ingredientes
+
+    // Cargar todos los ingredientes al iniciar la página
+    async function obtenerIngredientes() {
+        try {
+            const response = await fetch(`${apiUrl}/list.php?i=list`);
+            const data = await response.json();
+            if (data.drinks) {
+                ingredientesDisponibles = data.drinks.map(drink => drink.strIngredient1.toLowerCase());
+            }
+        } catch (error) {
+            console.error('Error al obtener la lista de ingredientes:', error);
+        }
+    }
+
+    // Llamar a la función para obtener los ingredientes al cargar la página
+    await obtenerIngredientes();
+
     // Restablecer el formulario completo al cargar la página
     form.reset();
-
-    // Restablecer el valor del select al cargar la página
     tipoSelect.value = ""; // Reiniciar el select a la opción por defecto
 
     // Desactivar los otros campos cuando uno está en uso
@@ -28,8 +44,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Monitorear el input de ingrediente
     inputIngrediente.addEventListener('input', function () {
-        if (inputIngrediente.value.trim().length > 0) {
+        const query = inputIngrediente.value.toLowerCase();
+
+        // Limpia las sugerencias anteriores
+        suggestionsListIngrediente.innerHTML = '';
+
+        if (query.length) {
             bloquearOtrosCampos(inputIngrediente);
+
+            // Filtrar la lista de ingredientes que contienen la consulta ingresada
+            const sugerenciasFiltradas = ingredientesDisponibles.filter(ingrediente =>
+                ingrediente.includes(query)
+            );
+
+            // Mostrar las sugerencias filtradas
+            sugerenciasFiltradas.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient; // Muestra el nombre del ingrediente
+                li.addEventListener('click', function () {
+                    inputIngrediente.value = ingredient; // Asigna el ingrediente seleccionado
+                    suggestionsListIngrediente.innerHTML = ''; // Limpia las sugerencias
+                });
+                suggestionsListIngrediente.appendChild(li);
+            });
         } else {
             habilitarTodosLosCampos();
         }
@@ -40,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const query = usernameInput.value.toLowerCase();
 
         // Limpia las sugerencias anteriores
-        suggestionsList.innerHTML = '';
+        suggestionsListIngrediente.innerHTML = '';
 
         if (query.length) {
             bloquearOtrosCampos(usernameInput);
@@ -49,19 +86,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 const data = await response.json();
 
                 if (data.drinks) {
-                    // Muestra las sugerencias basadas en la búsqueda
+                    // Muestra las sugerencias basadas en la búsqueda de nombres de cócteles
                     data.drinks.forEach(drink => {
                         const li = document.createElement('li');
                         li.textContent = drink.strDrink; // Muestra el nombre del cóctel
                         li.addEventListener('click', function () {
                             usernameInput.value = drink.strDrink; // Asigna el nombre seleccionado
-                            suggestionsList.innerHTML = ''; // Limpia las sugerencias
+                            suggestionsListIngrediente.innerHTML = ''; // Limpia las sugerencias
                         });
-                        suggestionsList.appendChild(li);
+                        suggestionsListIngrediente.appendChild(li);
                     });
                 }
             } catch (error) {
-                console.error('Error al buscar sugerencias:', error);
+                console.error('Error al buscar sugerencias de cócteles:', error);
             }
         } else {
             habilitarTodosLosCampos();
@@ -74,13 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
             bloquearOtrosCampos(tipoSelect);
         } else {
             habilitarTodosLosCampos();
-        }
-    });
-
-    // Ocultar sugerencias cuando se hace clic fuera del input
-    document.addEventListener('click', function (event) {
-        if (event.target !== usernameInput) {
-            suggestionsList.innerHTML = '';
         }
     });
 
@@ -109,28 +139,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Las funciones de búsqueda siguen siendo las mismas, llamando a la API original
     async function buscarCoctelesPorIngrediente(ingredient) {
         try {
             const response = await fetch(`${apiUrl}/filter.php?i=${ingredient}`);
-    
-            if (!response.ok) {
-                throw new Error(`Error en la red: ${response.status}`);
-            }
-    
-            const dataText = await response.text(); // Obtener la respuesta como texto primero
-    
-            if (!dataText) {
-                alert(`No hay bebidas con el ingrediente: ${ingredient}`);
-                return;
-            }
-    
-            const data = JSON.parse(dataText); // Convertir a JSON
-    
-            if (!data.drinks || data.drinks.length === 0) {
-                alert(`No hay bebidas con el ingrediente: ${ingredient}`);
-            } else {
+            const data = await response.json();
+
+            if (data.drinks) {
                 guardarResultados(data.drinks);
                 redirigirAPaginaDeResultados();
+            } else {
+                alert(`No hay bebidas con el ingrediente: ${ingredient}`);
             }
         } catch (error) {
             console.error('Error al buscar cócteles por ingrediente:', error);
@@ -143,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = await fetch(`${apiUrl}/filter.php?a=${tipo}`);
             const data = await response.json();
 
-            if (data.drinks && data.drinks.length > 0) {
+            if (data.drinks) {
                 guardarResultados(data.drinks);
                 redirigirAPaginaDeResultados();
             } else {
@@ -160,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = await fetch(`${apiUrl}/search.php?s=${nombre}`);
             const data = await response.json();
 
-            if (data.drinks && data.drinks.length > 0) {
+            if (data.drinks) {
                 guardarResultados(data.drinks);
                 redirigirAPaginaDeResultados();
             } else {

@@ -11,19 +11,19 @@
 <body>
     <div class="container">
         <div class="title">
-            <h1>Ingresa la información del cóctel</h1>
+            <h1>Busca tu Coctel</h1>
         </div>
         <div class="separator">
             <hr>
-            <span> o también...</span>
+            <span>Elige una opcion de busqueda</span>
             <hr>
         </div>
         <form id="form" autocomplete="off">
             
             <label for="ingredienteInput">
                 <span>Ingrediente</span>
-                <input type="text" id="ingredienteInput" autocomplete="off" placeholder="Escribe un ingrediente...">
-                
+                <input type="text" id="ingrediente" autocomplete="off" placeholder="Escribe un ingrediente...">
+                <ul id="suggestionsListIngrediente"></ul>
             </label>
 
             <label for="tipo">
@@ -32,13 +32,14 @@
                     <option value="" disabled selected>Seleccione un tipo</option>
                     <option value="1">Alcohólico</option>
                     <option value="2">No Alcohólico</option>
+                    <option value="3">Alcohol Opcional</option>
                 </select>
             </label>
 
             <label for="username">
                 <span>Nombre</span>
-                <input type="text" id="username" name="usuario">
-                <ul id="suggestionsList"></ul>
+                <input type="text" id="username" name="usuario" placeholder="Escribe el nombre...">
+                <ul id="suggestionsListName"></ul>
             </label>
 
             <label>

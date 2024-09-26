@@ -22,10 +22,14 @@ body {
     padding: 3rem 3rem;
     border-radius: 15px;
     gap: 20px;
-    min-width: 150px;
+    min-width: 350px;
     background-color: #fffcfcd9;
     backdrop-filter: blur(0.8px);
     box-shadow: -8px -8px 15px rgb(132, 29, 29);
+}
+
+.title{
+    margin: 2px auto;
 }
 
 .separator {
@@ -104,7 +108,7 @@ label input:focus, select:focus {
 }
 
 /* Estilos para la lista de sugerencias */
-#suggestionsList {
+#suggestionsListName, #suggestionsListIngrediente {
     list-style-type: none;
     padding: 0;
     margin: 5px 0 0 0;
@@ -115,14 +119,14 @@ label input:focus, select:focus {
     background-color: #fff;
 }
 
-#suggestionsList li {
+#suggestionsListName li, #suggestionsListIngrediente li {
     padding: 10px;
     cursor: pointer;
     border-bottom: 1px solid #eaeaea;
     font-size: 14pt;
 }
 
-#suggestionsList li:hover {
+#suggestionsListName li:hover, #suggestionsListIngrediente li:hover {
     background-color: #f3f3f4;
 }
 
