@@ -1,0 +1,83 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin:2rem;
+    background: linear-gradient(180deg, #000000, #c20000,#5400c2);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    color: #000000;
+    max-width: 250px;
+    min-height: 350px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-body {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.btn-submit {
+    background-color: #c20000;
+    color: white;
+    font-weight: 500;
+    font-size: 14pt;
+    text-align: center;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute; /* Para posicionar el botón en la esquina */
+    top: 20px; /* Ajusta la posición vertical */
+    left: 20px; /* Ajusta la posición horizontal */
+}
+
+.btn-submit:hover {
+    opacity: 0.75;
+}

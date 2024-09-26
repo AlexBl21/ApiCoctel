@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input con Sugerencias</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Ingresa la información del cóctel</h1>
+        </div>
+        <div class="separator">
+            <hr>
+            <span> o también...</span>
+            <hr>
+        </div>
+        <form id="form" autocomplete="off">
+            
+            <label for="ingredienteInput">
+                <span>Ingrediente</span>
+                <input type="text" id="ingredienteInput" autocomplete="off" placeholder="Escribe un ingrediente...">
+                
+            </label>
+
+            <label for="tipo">
+                <span>Tipo</span>
+                <select id="tipo">
+                    <option value="" disabled selected>Seleccione un tipo</option>
+                    <option value="1">Alcohólico</option>
+                    <option value="2">No Alcohólico</option>
+                </select>
+            </label>
+
+            <label for="username">
+                <span>Nombre</span>
+                <input type="text" id="username" name="usuario">
+                <ul id="suggestionsList"></ul>
+            </label>
+
+            <label>
+                <button type="submit" class="btn-submit">Buscar</button>
+            </label>
+        </form>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
+
+

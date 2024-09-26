@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="css/prodcutos.css">
+</head>
+<body>
+    <button class="btn-submit" id="regresarBtn">Regresar</button>
+
+    <div class="card-container" id="results">
+        <!-- Los resultados se insertarán aquí -->
+    </div>
+
+    <script src="js/productos.js"></script>
+    <script>
+        // Manejo del evento de clic para el botón "Regresar"
+        document.getElementById('regresarBtn').addEventListener('click', function() {
+            window.location.href = '../index.html'; // Cambia la ruta según tu estructura de carpetas
+        });
+    </script>
+</body>
+</html>
+

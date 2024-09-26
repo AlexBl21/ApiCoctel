@@ -1,0 +1,156 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url("img/coctail.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 4rem 6rem;
+    padding: 3rem 3rem;
+    border-radius: 15px;
+    gap: 20px;
+    min-width: 150px;
+    background-color: #fffcfcd9;
+    backdrop-filter: blur(0.8px);
+    box-shadow: -8px -8px 15px rgb(132, 29, 29);
+}
+
+.separator {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+}
+
+.separator hr {
+    flex-grow: 2;
+    border: none;
+    border-bottom: 3px solid #ababab;
+    border-radius: 2px;
+}
+
+.separator span {
+    color: #000000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label span {
+    font-weight: 600;
+    font-size: 15px;
+    display: block;
+}
+
+label input, select {
+    width: auto;
+    background-color: #f3f3f4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14pt;
+    transition: background-color 0.2s, border 0.2s, box-shadow 0.2s;
+}
+
+label input:hover, select:hover {
+    background-color: white;
+    border: solid 1px #4e7b52;
+    box-shadow: 0 0 4px rgb(112, 195, 195);
+}
+
+label input:focus, select:focus {
+    background-color: white;
+    border: solid 1px #249242;
+    box-shadow: 0 0 4px rgb(112, 195, 195);
+}
+
+.btn-submit {
+    background-color: #c20000;
+    color: white;
+    font-weight: 500;
+    font-size: 14pt;
+    text-align: center;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    opacity: 0.75;
+}
+
+/* Estilos para la lista de sugerencias */
+#suggestionsList {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+#suggestionsList li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 14pt;
+}
+
+#suggestionsList li:hover {
+    background-color: #f3f3f4;
+}
+
+/* Estilos para las tarjetas de cócteles */
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.drink-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.drink-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.drink-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
