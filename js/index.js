@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
         // Si no hay ingrediente, busca por tipo
         else if (tipo) {
-            const tipoBusqueda = tipo === '1' ? 'Alcoholic' : 'Non_Alcoholic';
+            const tipoBusqueda = tipo === '1' ? 'Alcoholic' : (tipo === '2' ? 'Non_Alcoholic' : 'Optional_Alcohol');
             buscarCoctelesPorTipo(tipoBusqueda);
         }
         // Si no hay ingrediente ni tipo, busca por nombre
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 guardarResultados(data.drinks);
                 redirigirAPaginaDeResultados();
             } else {
-                alert(`No hay bebidas de tipo: ${tipo === 'Alcoholic' ? 'Alcohólico' : 'No Alcohólico'}`);
+                alert(`No hay bebidas de tipo: ${tipo === 'Alcoholic' ? 'Alcohólico' : (tipo === 'No_Alcoholic' ? 'No Alcoholico' : 'Alcohol Opcional')}`);
             }
         } catch (error) {
             console.error('Error al buscar por tipo:', error);
