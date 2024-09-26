@@ -92,14 +92,16 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    position: absolute; /* Para posicionar el botón en la esquina */
+    position: fixed; /* Fija el botón en la pantalla */
     top: 20px; /* Ajusta la posición vertical */
     left: 20px; /* Ajusta la posición horizontal */
+    z-index: 9999; /* Asegura que el botón esté siempre por encima de otros elementos */
 }
 
 .btn-regresar:hover {
     opacity: 0.75;
 }
+
 
 /* Estilo de la página de detalles */
 .details-container {
