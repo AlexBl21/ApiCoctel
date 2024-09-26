@@ -196,6 +196,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     function redirigirAPaginaDeResultados() {
-        window.location.href = 'productos.html';
+        window.location.href = '../index.html/productos.html';
     }
 });
