@@ -153,6 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Manejo del evento de clic para el botón "Regresar"
     document.getElementById('regresarBtn').addEventListener('click', function() {
-        window.location.href = './productos.html'; // Cambia la ruta según tu estructura de carpetas
+        window.location.href = './index.html'; // Cambia la ruta según tu estructura de carpetas
     });
 });
